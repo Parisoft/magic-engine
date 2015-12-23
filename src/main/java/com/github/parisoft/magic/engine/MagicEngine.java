@@ -42,7 +42,7 @@ public class MagicEngine {
             String text = card.getText();
 
             boolean condition = 
-                    containsIgnoreCase(text, " ten");
+                    containsIgnoreCase(text, " divid ");
 
             if (condition) {
                 log.info("Card '{}' text '{}'", name, text);

@@ -19,6 +19,9 @@ public class MtgObject {
     protected String toughness;
     protected String loyalty;
     protected List<Ability> abilities;
+    
+    protected Player owner;
+    protected Player controller;
 
     public String getName() {
         return name;
@@ -106,6 +109,14 @@ public class MtgObject {
 
     public void setAbilities(List<Ability> abilities) {
         this.abilities = abilities;
+    }
+    
+    public Player getOwner() {
+        return owner;
+    }
+    
+    public Player getController() {
+        return controller;
     }
 
 }

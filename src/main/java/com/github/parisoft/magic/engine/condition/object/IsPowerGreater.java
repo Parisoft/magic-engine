@@ -8,7 +8,7 @@ public class IsPowerGreater extends CharacteristCondition {
     public boolean meets(MtgObject object) {
         Integer pow = toInteger(object.getPower());
         
-        return pow != null && pow > toInteger(expectedValue);
+        return pow != null && pow > expectedInt();
     }
 
 }

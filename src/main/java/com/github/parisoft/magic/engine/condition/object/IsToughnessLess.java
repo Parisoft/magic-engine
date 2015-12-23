@@ -7,7 +7,7 @@ public class IsToughnessLess extends CharacteristCondition {
     @Override
     public boolean meets(MtgObject object) {
         Integer tou = toInteger(object.getToughness());
-        return tou != null && tou < toInteger(expectedValue);
+        return tou != null && tou < expectedInt();
     }
 
 }
