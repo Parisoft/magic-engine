@@ -4,18 +4,16 @@ import static com.github.parisoft.magic.engine.condition.Condition.Conjuction.AN
 
 import java.util.Collection;
 
-import com.github.parisoft.magic.engine.condition.Condition.Conjuction;
-
 public class Conditions {
 
-    public static boolean meets(Collection<Condition<?>> conditions) {
+    public static <T> boolean meets(Collection<Condition<T>> conditions, T object) {
         boolean meets = true;
         
-        for (Condition<?> condition : conditions) {
+        for (Condition<T> condition : conditions) {
             if (condition.conjuction.equals(AND)) {
-                meets = meets && condition.meets(object);
+                meets &= condition.meets(object);
             } else {
-                meets = meets || condition.meets(object);
+                meets |= condition.meets(object);
             }
         }
         
