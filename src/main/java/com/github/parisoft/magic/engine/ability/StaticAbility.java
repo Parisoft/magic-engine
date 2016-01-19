@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.github.parisoft.magic.engine.effect.continuous.ContinuousEffect;
 
-public class StaticAbility {
+public class StaticAbility extends Ability {
 
     protected List<ContinuousEffect> continuousEffects;
 }

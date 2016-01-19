@@ -1,14 +1,19 @@
 package com.github.parisoft.magic.engine.game;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
+import com.github.parisoft.magic.engine.entity.Player;
 import com.github.parisoft.magic.engine.event.Event;
+import com.github.parisoft.magic.engine.zone.Battlefield;
 
 public class Game implements Runnable {
 
-    private List<Turn> turns = new ArrayList<>();
+    private final Deque<Turn> turns = new ArrayDeque<>();
+    private final Battlefield battlefield = new Battlefield();
+
     private Turn currentTurn;
+    private Player activePlayer;
    
     @Override
     public void run() {
@@ -18,23 +23,35 @@ public class Game implements Runnable {
         }
     }
     
-    public Turn currentTurn() {
-        return currentTurn;
-    }
-
     private Turn nextTurn() {
         if (turns.isEmpty()) {
             return new Turn();
         }
         
-        return turns.remove(0);
+        return turns.pop();
+    }
+    
+    public Player getActivePlayer() {
+        return activePlayer;
+    }
+    
+    public Turn getCurrentTurn() {
+        return currentTurn;
+    }
+
+    public Battlefield getBattlefield() {
+        return battlefield;
     }
 
     public boolean isNotEnded() {
         return !Thread.interrupted();//TODO check game end conditions
     }
     
-    public void execute(Event event) {
+    public void perform(Event event) {
+        
+    }
+    
+    public void givePriority() {
         
     }
 }

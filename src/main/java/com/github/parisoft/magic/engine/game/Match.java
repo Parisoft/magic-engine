@@ -18,8 +18,8 @@ public class Match implements Runnable {
         }
     }
     
-    public static Game currentGame() {
-        return instance.get().currentGame;
+    public Game getCurrentGame() {
+        return currentGame;
     }
     
     public boolean isNotEnded() {
@@ -27,7 +27,10 @@ public class Match implements Runnable {
     }
     
     public Game nextGame() {
-        return new Game();
+        return currentGame = new Game();
     }
     
+    public static Match getInstance() {
+        return instance.get();
+    }
 }

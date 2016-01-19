@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.parisoft.magic.engine.ability.Ability;
+import com.google.common.collect.FluentIterable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MtgObject {
@@ -103,6 +104,10 @@ public class MtgObject {
         this.loyalty = loyalty;
     }
 
+    public <A extends Ability> List<A> getAbilities(Class<A> abilityType) {
+        return FluentIterable.from(abilities).filter(abilityType).toList();
+    }
+    
     public List<Ability> getAbilities() {
         return abilities;
     }

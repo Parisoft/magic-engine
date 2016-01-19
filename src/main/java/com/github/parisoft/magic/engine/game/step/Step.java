@@ -1,14 +1,15 @@
 package com.github.parisoft.magic.engine.game.step;
 
-import static com.github.parisoft.magic.engine.game.Match.currentGame;
+import static com.github.parisoft.magic.engine.game.Games.currentGame;
 
 import com.github.parisoft.magic.engine.event.BeginStepEvent;
 import com.github.parisoft.magic.engine.event.EndStepEvent;
 
 public abstract class Step implements Runnable {
 
-    private boolean skipped;
     private final String name;
+
+    private boolean skipped;
     
     public Step(StepName name) {
         this.name = name.toString();
@@ -16,7 +17,7 @@ public abstract class Step implements Runnable {
 
     @Override
     public void run() {
-        currentGame().execute(new BeginStepEvent(this));
+        currentGame().perform(new BeginStepEvent(this));
         
         if (isSkipped()) {
             return;
@@ -24,7 +25,7 @@ public abstract class Step implements Runnable {
         
         runStep();
         
-        currentGame().execute(new EndStepEvent(this));
+        currentGame().perform(new EndStepEvent(this));
     }
 
     public boolean isSkipped() {

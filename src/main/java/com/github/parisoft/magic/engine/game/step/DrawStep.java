@@ -1,5 +1,10 @@
 package com.github.parisoft.magic.engine.game.step;
 
+import static com.github.parisoft.magic.engine.game.Games.activePlayer;
+import static com.github.parisoft.magic.engine.game.Games.currentGame;
+
+import com.github.parisoft.magic.engine.event.DrawEvent;
+
 public class DrawStep extends Step {
 
     public DrawStep() {
@@ -8,7 +13,7 @@ public class DrawStep extends Step {
 
     @Override
     protected void runStep() {
-        // TODO Auto-generated method stub
-        
+        currentGame().perform(new DrawEvent(activePlayer(), 1));
+        currentGame().givePriority();
     }
 }
