@@ -4,9 +4,7 @@ import static org.apache.commons.lang3.StringUtils.containsIgnoreCase;
 import static org.apache.commons.lang3.StringUtils.replace;
 import static org.apache.commons.lang3.StringUtils.split;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,13 +12,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.core.io.ClassPathResource;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.parisoft.magic.engine.entity.Card;
 import com.github.parisoft.magic.engine.interpreter.AbilityExpression;
 import com.github.parisoft.magic.engine.interpreter.Token;
+import com.github.parisoft.magic.engine.oracle.Oracle;
 
 @SpringBootApplication
 @ComponentScan("com.github.parisoft.magic")
@@ -37,22 +33,24 @@ public class MagicEngine {
     }
 
     static void search() throws IOException {
-        for (Card card : getOracle().values()) {
+        for (Card card : getOracle().getCards()) {
             String name = card.getName();
             String text = card.getText();
 
             boolean condition = 
-                    containsIgnoreCase(text, " divid ");
+                    containsIgnoreCase(text, " at the end of ")
+//                    && containsIgnoreCase(text, "untap step")
+                    ;
 
             if (condition) {
-                log.info("Card '{}' text '{}'", name, text);
+                log.warn("Card '{}' text '{}'", name, text);
             }
         }
     }
 
     static void testInterpret() throws IOException {
         AbilityExpression abilityExpression = ctx.getBean(AbilityExpression.class);
-        Card card = getOracle().get("Brood of Cockroaches");
+        Card card = getOracle().getCard("Brood of Cockroaches");
         String textBox = card.getText();
         String[] texts = split(textBox, '\n');
 
@@ -64,8 +62,7 @@ public class MagicEngine {
         }
     }
 
-    private static Map<String, Card> getOracle() throws IOException {
-        File setFile = new ClassPathResource("AllCards.json").getFile();
-        return new ObjectMapper().readValue(setFile, new TypeReference<Map<String, Card>>(){});
+    private static Oracle getOracle() throws IOException {
+        return ctx.getBean(Oracle.class);
     }
 }
