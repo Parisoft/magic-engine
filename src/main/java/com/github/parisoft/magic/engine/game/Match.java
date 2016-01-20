@@ -21,7 +21,7 @@ public class Match implements Runnable {
     }
     
     public Game nextGame() {
-        return currentGame = new Game();
+        return new Game();
     }
 
 }

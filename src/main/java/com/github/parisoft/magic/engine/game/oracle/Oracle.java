@@ -1,4 +1,4 @@
-package com.github.parisoft.magic.engine.core.oracle;
+package com.github.parisoft.magic.engine.game.oracle;
 
 import java.io.InputStream;
 import java.util.Collection;
