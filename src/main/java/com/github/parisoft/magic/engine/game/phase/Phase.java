@@ -5,8 +5,8 @@ import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 
 import java.util.Deque;
 
-import com.github.parisoft.magic.engine.event.BeginPhaseEvent;
-import com.github.parisoft.magic.engine.event.EndPhaseEvent;
+import com.github.parisoft.magic.engine.core.event.BeginPhaseEvent;
+import com.github.parisoft.magic.engine.core.event.EndPhaseEvent;
 import com.github.parisoft.magic.engine.game.step.Step;
 
 public abstract class Phase implements Runnable {

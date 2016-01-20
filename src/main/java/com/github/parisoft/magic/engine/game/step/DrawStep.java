@@ -3,7 +3,7 @@ package com.github.parisoft.magic.engine.game.step;
 import static com.github.parisoft.magic.engine.game.Games.activePlayer;
 import static com.github.parisoft.magic.engine.game.Games.currentGame;
 
-import com.github.parisoft.magic.engine.event.DrawEvent;
+import com.github.parisoft.magic.engine.core.event.DrawEvent;
 
 public class DrawStep extends Step {
 

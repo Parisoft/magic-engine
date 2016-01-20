@@ -13,10 +13,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.github.parisoft.magic.engine.entity.Card;
+import com.github.parisoft.magic.engine.core.entity.Card;
+import com.github.parisoft.magic.engine.core.oracle.Oracle;
 import com.github.parisoft.magic.engine.interpreter.AbilityExpression;
 import com.github.parisoft.magic.engine.interpreter.Token;
-import com.github.parisoft.magic.engine.oracle.Oracle;
 
 @SpringBootApplication
 @ComponentScan("com.github.parisoft.magic")

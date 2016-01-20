@@ -1,13 +1,23 @@
 package com.github.parisoft.magic.engine.game;
 
-import com.github.parisoft.magic.engine.entity.Player;
+import com.github.parisoft.magic.engine.core.entity.Player;
 import com.github.parisoft.magic.engine.game.phase.Phase;
 import com.github.parisoft.magic.engine.game.step.Step;
 
 public class Games {
 
+    static final ThreadLocal<Match> currentMatch = new ThreadLocal<Match>(){
+        protected Match initialValue() {
+            return new Match();
+        }
+    };
+    
+    public static Match currentMatch() {
+        return currentMatch.get();
+    }
+    
     public static Game currentGame() {
-        return Match.getInstance().getCurrentGame();
+        return currentMatch().getCurrentGame();
     }
     
     public static Turn currentTurn() {

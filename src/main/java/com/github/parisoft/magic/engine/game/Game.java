@@ -3,9 +3,9 @@ package com.github.parisoft.magic.engine.game;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-import com.github.parisoft.magic.engine.entity.Player;
-import com.github.parisoft.magic.engine.event.Event;
-import com.github.parisoft.magic.engine.zone.Battlefield;
+import com.github.parisoft.magic.engine.core.entity.Player;
+import com.github.parisoft.magic.engine.core.event.Event;
+import com.github.parisoft.magic.engine.core.zone.Battlefield;
 
 public class Game implements Runnable {
 

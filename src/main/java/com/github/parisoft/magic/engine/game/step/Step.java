@@ -2,8 +2,8 @@ package com.github.parisoft.magic.engine.game.step;
 
 import static com.github.parisoft.magic.engine.game.Games.currentGame;
 
-import com.github.parisoft.magic.engine.event.BeginStepEvent;
-import com.github.parisoft.magic.engine.event.EndStepEvent;
+import com.github.parisoft.magic.engine.core.event.BeginStepEvent;
+import com.github.parisoft.magic.engine.core.event.EndStepEvent;
 
 public abstract class Step implements Runnable {
 
