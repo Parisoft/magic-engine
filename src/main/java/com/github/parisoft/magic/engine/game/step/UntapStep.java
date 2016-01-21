@@ -24,12 +24,10 @@ public class UntapStep extends Step {
 
     private void phasePermanents() {
         for (Card card : activePlayer().getPermanents()) {
-            if (isNotEmpty(card.getAbilities(Phasing.class))) {
-                if (card.isPhased()) {
-                    currentGame().perform(new PhaseInEvent(card));
-                } else {
-                    currentGame().perform(new PhaseOutEvent(card));
-                }
+            if (card.isPhased()) {
+                currentGame().perform(new PhaseInEvent(card));
+            } else if (isNotEmpty(card.getAbilities(Phasing.class))) {
+                currentGame().perform(new PhaseOutEvent(card));
             }
         }
     }
