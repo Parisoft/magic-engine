@@ -15,7 +15,7 @@ public class BeginPhaseEvent extends Event {
     }
     
     @Override
-    public void resolve() {
+    public void perform() {
         // TODO Auto-generated method stub
         
     }

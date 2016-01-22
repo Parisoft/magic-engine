@@ -9,6 +9,7 @@ import java.util.List;
 import com.github.parisoft.magic.engine.core.zone.Graveyard;
 import com.github.parisoft.magic.engine.core.zone.Hand;
 import com.github.parisoft.magic.engine.core.zone.Library;
+import com.github.parisoft.magic.engine.game.combat.AttackerDeclaration;
 
 public class Player {
 
@@ -17,7 +18,8 @@ public class Player {
     private Hand hand;
     private Graveyard graveyard;
     private Library library;
-
+    private Player opponent;
+    
     public String getName() {
         return name;
     }
@@ -54,6 +56,14 @@ public class Player {
         return library;
     }
 
+    public Player getOpponent() {
+        return opponent;
+    }
+    
+    public void setOpponent(Player opponent) {
+        this.opponent = opponent;
+    }
+    
     public Collection<Card> getPermanents() {
         List<Card> permanents = new ArrayList<>();
         
@@ -64,5 +74,9 @@ public class Player {
         }
         
         return permanents;
+    }
+    
+    public AttackerDeclaration declareAttackers() {
+        return null;
     }
 }

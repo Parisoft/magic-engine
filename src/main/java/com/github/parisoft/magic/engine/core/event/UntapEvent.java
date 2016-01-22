@@ -11,7 +11,7 @@ public class UntapEvent extends Event {
     }
 
     @Override
-    public void resolve() {
+    public void perform() {
         card.setTapped(false);
     }
 

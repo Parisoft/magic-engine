@@ -2,17 +2,17 @@ package com.github.parisoft.magic.engine.core.event;
 
 import com.github.parisoft.magic.engine.core.entity.Card;
 
-public class PhaseInEvent extends Event {
+public class TapEvent extends Event {
 
     private Card card;
-    
-    public PhaseInEvent(Card card) {
+
+    public TapEvent(Card card) {
         this.card = card;
     }
-    
+
     @Override
     public void perform() {
-        card.setPhased(false);
+        card.setTapped(true);
     }
 
 }

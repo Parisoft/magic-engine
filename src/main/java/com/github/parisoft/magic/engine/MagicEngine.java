@@ -38,8 +38,8 @@ public class MagicEngine {
             String text = card.getText();
 
             boolean condition = 
-                    containsIgnoreCase(text, " at the end of ")
-//                    && containsIgnoreCase(text, "untap step")
+                    containsIgnoreCase(text, " Planeswalker")
+//                    && containsIgnoreCase(text, "attack")
                     ;
 
             if (condition) {

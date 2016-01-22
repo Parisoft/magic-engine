@@ -5,7 +5,7 @@ import com.github.parisoft.magic.engine.core.zone.Battlefield;
 import com.github.parisoft.magic.engine.core.zone.Graveyard;
 
 
-public class DestroyEvent extends MoveEvent {
+public class DestroyEvent extends ZoneChangeEvent {
 
     public DestroyEvent(Card card, Battlefield battlefield, Graveyard graveyard) {
         super(card, battlefield, graveyard);

@@ -15,9 +15,9 @@ public class DrawEvent extends Event {
     }
 
     @Override
-    public void resolve() {
+    public void perform() {
         for (int i = 0; i < qty; i++) {
-            currentGame().perform(new MoveEvent(player.getLibrary().peek(), player.getLibrary(), player.getHand()));
+            currentGame().perform(new ZoneChangeEvent(player.getLibrary().peek(), player.getLibrary(), player.getHand()));
         }
     }
 

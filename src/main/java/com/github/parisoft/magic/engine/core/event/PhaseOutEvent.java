@@ -11,7 +11,7 @@ public class PhaseOutEvent extends Event {
     }
     
     @Override
-    public void resolve() {
+    public void perform() {
         card.setPhased(true);
     }
 

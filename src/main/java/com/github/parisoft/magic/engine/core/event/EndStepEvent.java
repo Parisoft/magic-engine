@@ -15,7 +15,7 @@ public class EndStepEvent extends Event {
     }
 
     @Override
-    public void resolve() {
+    public void perform() {
         // TODO Auto-generated method stub
         
     }
