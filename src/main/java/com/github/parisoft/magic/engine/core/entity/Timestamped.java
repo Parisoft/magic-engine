@@ -1,7 +1,7 @@
 package com.github.parisoft.magic.engine.core.entity;
 
 
-public class Timestampable {
+public class Timestamped {
 
     protected long timestamp = 0;
     
@@ -13,23 +13,23 @@ public class Timestampable {
         this.timestamp = timestamp;
     }
     
-    public boolean isEarlierThan(Timestampable other) {
+    public boolean isEarlierThan(Timestamped other) {
         return this.timestamp < other.timestamp;
     }
     
-    public boolean isEarlierOrSameThan(Timestampable other) {
+    public boolean isEarlierOrSameThan(Timestamped other) {
         return this.timestamp <= other.timestamp;
     }
     
-    public boolean isLaterThan(Timestampable other) {
+    public boolean isLaterThan(Timestamped other) {
         return this.timestamp > other.timestamp;
     }
     
-    public boolean isLaterOrSameThan(Timestampable other) {
+    public boolean isLaterOrSameThan(Timestamped other) {
         return this.timestamp >= other.timestamp;
     }
     
-    public boolean isSameThan(Timestampable other) {
+    public boolean isSameThan(Timestamped other) {
         return this.timestamp == other.timestamp;
     }
 }

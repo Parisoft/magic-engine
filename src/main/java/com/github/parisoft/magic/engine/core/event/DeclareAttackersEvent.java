@@ -1,42 +1,46 @@
 package com.github.parisoft.magic.engine.core.event;
 
-import static com.github.parisoft.magic.engine.game.Games.currentTurn;
+import static com.github.parisoft.magic.engine.game.Games.currentGame;
+import static org.apache.commons.collections4.CollectionUtils.emptyIfNull;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.github.parisoft.magic.engine.core.entity.Card;
 import com.github.parisoft.magic.engine.core.entity.Player;
-import com.github.parisoft.magic.engine.game.combat.AttackerDeclaration;
+import com.github.parisoft.magic.engine.game.question.combat.Attack;
+import com.github.parisoft.magic.engine.game.question.combat.DeclareAttackersQuestion;
 
 public class DeclareAttackersEvent extends Event {
 
-    private Map<Card, Object> attackers = new HashMap<>();
+    private List<Attack> attackList = new ArrayList<>();
     
-    public DeclareAttackersEvent(AttackerDeclaration declaration) {
-        for (Entry<Card, Card> attack : declaration.getPlaneswalkerAttackers().entrySet()) {
-            attackers.put(attack.getKey(), attack.getValue());
-        }
-        
-        for (Entry<Card, Player> attack : declaration.getPlayerAttackers().entrySet()) {
-            attackers.put(attack.getKey(), attack.getValue());
-        }
+    public DeclareAttackersEvent(List<Attack> attackList) {
+        this.attackList.addAll(emptyIfNull(attackList));
+    }
+    
+    public DeclareAttackersEvent(DeclareAttackersQuestion question) {
+        attackList.addAll(emptyIfNull(question.getAnswer()));
     }
     
     public DeclareAttackersEvent(Card attacker, Object attacked) {
-        attackers.put(attacker, attacked);
+        attackList.add(new Attack(attacker, attacked));
     }
     
     @Override
     public void perform() {
-        for (Card attacker : attackers.keySet()) {
-            attacker.setAttacking(true);
-            currentTurn().getAttackers().add(attacker);
+        for (Attack attack : attackList) {
+            Card attacker = (Card) attack.getAttacker();
+            
+            if (attack.getAttacked() instanceof Player) {
+                currentGame().perform(new DeclareAttackerEvent(attacker, (Player) attack.getAttacked()));
+            } else {
+                currentGame().perform(new DeclareAttackerEvent(attacker, (Card) attack.getAttacked()));
+            }
         }
     }
     
-    public Map<Card, Object> getAttackers() {
-        return attackers;
+    public List<Attack> getAttackList() {
+        return attackList;
     }
 }

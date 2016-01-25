@@ -9,12 +9,13 @@ import java.util.List;
 import com.github.parisoft.magic.engine.core.zone.Graveyard;
 import com.github.parisoft.magic.engine.core.zone.Hand;
 import com.github.parisoft.magic.engine.core.zone.Library;
-import com.github.parisoft.magic.engine.game.combat.AttackerDeclaration;
+import com.github.parisoft.magic.engine.game.question.Question;
 
 public class Player {
 
     private String name;
     private int life;
+    private int maximumHandSize;
     private Hand hand;
     private Graveyard graveyard;
     private Library library;
@@ -34,6 +35,14 @@ public class Player {
 
     public void setLife(int life) {
         this.life = life;
+    }
+    
+    public int getMaximumHandSize() {
+        return maximumHandSize;
+    }
+    
+    public void setMaximumHandSize(int maximumHandSize) {
+        this.maximumHandSize = maximumHandSize;
     }
 
     public Hand getHand() {
@@ -76,7 +85,8 @@ public class Player {
         return permanents;
     }
     
-    public AttackerDeclaration declareAttackers() {
-        return null;
+    public <T> T answer(Question<T> question) {
+        //TODO mtg: implement question request
+        return question.getAnswer();
     }
 }

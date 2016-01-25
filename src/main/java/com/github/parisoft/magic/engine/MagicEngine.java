@@ -31,7 +31,7 @@ public class MagicEngine {
 
         search();
     }
-
+    
     static void search() throws IOException {
         for (Card card : getOracle().getCards()) {
             String name = card.getName();

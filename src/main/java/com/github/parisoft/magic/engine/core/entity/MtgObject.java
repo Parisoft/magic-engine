@@ -7,7 +7,7 @@ import com.github.parisoft.magic.engine.core.ability.Ability;
 import com.google.common.collect.FluentIterable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MtgObject extends Timestampable {
+public class MtgObject extends Timestamped {
 
     protected String name;
     protected String manaCost;

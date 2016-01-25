@@ -1,26 +1,25 @@
 package com.github.parisoft.magic.engine.game;
 
+import static com.github.parisoft.magic.engine.game.Turns.newPhases;
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Deque;
 
 import com.github.parisoft.magic.engine.core.entity.Card;
-import com.github.parisoft.magic.engine.core.entity.Timestampable;
+import com.github.parisoft.magic.engine.core.entity.Timestamped;
 import com.github.parisoft.magic.engine.game.phase.BeginningPhase;
 import com.github.parisoft.magic.engine.game.phase.CombatPhase;
 import com.github.parisoft.magic.engine.game.phase.MainPhase;
 import com.github.parisoft.magic.engine.game.phase.Phase;
 
-public class Turn extends Timestampable implements Runnable {
+public class Turn extends Timestamped implements Runnable {
 
-    private final Deque<Phase> beginningPhases = new ArrayDeque<>(Arrays.asList(new BeginningPhase()));
-    private final Deque<Phase> preCombatMainPhases = new ArrayDeque<>(Arrays.asList(new MainPhase()));
-    private final Deque<Phase> postCombatMainPhases = new ArrayDeque<>(Arrays.asList(new MainPhase()));
-    private final Deque<Phase> combatPhases = new ArrayDeque<>(Arrays.asList(new CombatPhase()));
+    private final Deque<BeginningPhase> beginningPhases = newPhases(BeginningPhase.class);
+    private final Deque<MainPhase> preCombatMainPhases = newPhases(MainPhase.class);
+    private final Deque<MainPhase> postCombatMainPhases = newPhases(MainPhase.class);
+    private final Deque<CombatPhase> combatPhases = newPhases(CombatPhase.class);
     private final Collection<Card> attackers = new ArrayList<>();
     private final Collection<Card> blockers = new ArrayList<>();
     

@@ -12,10 +12,6 @@ import com.github.parisoft.magic.engine.core.event.UntapEvent;
 
 public class UntapStep extends Step {
 
-    public UntapStep() {
-        super(StepName.UNTAP);
-    }
-
     @Override
     protected void runStep() {
         phasePermanents();

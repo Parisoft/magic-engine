@@ -7,14 +7,8 @@ import com.github.parisoft.magic.engine.core.event.EndStepEvent;
 
 public abstract class Step implements Runnable {
 
-    private final String name;
-
     private boolean skipped;
     
-    public Step(StepName name) {
-        this.name = name.toString();
-    }
-
     @Override
     public void run() {
         currentGame().perform(new BeginStepEvent(this));
@@ -36,10 +30,6 @@ public abstract class Step implements Runnable {
         this.skipped = skipped;
     }
 
-    public String getName() {
-        return name;
-    }
-    
     protected abstract void runStep();
 
 }

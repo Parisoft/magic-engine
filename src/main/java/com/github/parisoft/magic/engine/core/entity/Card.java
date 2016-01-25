@@ -1,12 +1,14 @@
 package com.github.parisoft.magic.engine.core.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Card extends MtgObject {
 
     private boolean tapped = false;
     private boolean phased = false;
-    private boolean attacking = false;
-    private Card blockedBy;
-
+    private List<Card> blockedBy = new ArrayList<>();
+    
     public boolean isTapped() {
         return tapped;
     }
@@ -22,21 +24,9 @@ public class Card extends MtgObject {
     public void setPhased(boolean phased) {
         this.phased = phased;
     }
-
-    public boolean isAttacking() {
-        return attacking;
-    }
-
-    public void setAttacking(boolean attacking) {
-        this.attacking = attacking;
-    }
-
-    public Card getBlockedBy() {
+    
+    public List<Card> getBlockedBy() {
         return blockedBy;
-    }
-
-    public void setBlockedBy(Card blockedBy) {
-        this.blockedBy = blockedBy;
     }
     
 }

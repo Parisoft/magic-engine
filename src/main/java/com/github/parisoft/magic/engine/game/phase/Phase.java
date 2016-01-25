@@ -11,14 +11,8 @@ import com.github.parisoft.magic.engine.game.step.Step;
 
 public abstract class Phase implements Runnable {
 
-    private final String name;
-    
     private boolean skipped;
     private Step currentStep;
-    
-    public Phase(PhaseName name) {
-        this.name = name.toString();
-    }
     
     @Override
     public void run() {
@@ -39,10 +33,6 @@ public abstract class Phase implements Runnable {
 
     public void setSkipped(boolean skipped) {
         this.skipped = skipped;
-    }
-    
-    public String getName() {
-        return name;
     }
     
     public Step getCurrentStep() {
