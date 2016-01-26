@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.github.parisoft.magic.engine.core.entity.Card;
+import com.github.parisoft.magic.engine.core.entity.MtgObject;
 import com.github.parisoft.magic.engine.game.oracle.Oracle;
 import com.github.parisoft.magic.engine.interpreter.AbilityExpression;
 import com.github.parisoft.magic.engine.interpreter.Token;
@@ -33,7 +33,7 @@ public class MagicEngine {
     }
     
     static void search() throws IOException {
-        for (Card card : getOracle().getCards()) {
+        for (MtgObject card : getOracle().getCards()) {
             String name = card.getName();
             String text = card.getText();
 
@@ -50,7 +50,7 @@ public class MagicEngine {
 
     static void testInterpret() throws IOException {
         AbilityExpression abilityExpression = ctx.getBean(AbilityExpression.class);
-        Card card = getOracle().getCard("Brood of Cockroaches");
+        MtgObject card = getOracle().getCard("Brood of Cockroaches");
         String textBox = card.getText();
         String[] texts = split(textBox, '\n');
 

@@ -16,8 +16,8 @@ public class DeclareBlockerEvent extends Event {
 
     @Override
     public void perform() {
-        blocked.getBlocked().add(blocker);
-        blocker.getBlocking().add(blocked);
+        blocked.getBlockedBy().put(blocker, 0);
+        blocker.getAttackedBy().put(blocked, 0);
         currentTurn().getBlockers().add(blocker);
     }
 

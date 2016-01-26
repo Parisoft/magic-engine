@@ -1,32 +1,34 @@
 package com.github.parisoft.magic.engine.game.question.combat;
 
+import com.github.parisoft.magic.engine.core.entity.Entity;
+
 public class Block {
 
-    private Object blocker;
-    private Object blocked;
+    private Entity blocker;
+    private Entity blocked;
 
     public Block() {
         super();
     }
 
-    public Block(Object blocker, Object blocked) {
+    public Block(Entity blocker, Entity blocked) {
         this.blocker = blocker;
         this.blocked = blocked;
     }
 
-    public Object getBlocker() {
+    public Entity getBlocker() {
         return blocker;
     }
 
-    public void setBlocker(Object blocker) {
+    public void setBlocker(Entity blocker) {
         this.blocker = blocker;
     }
 
-    public Object getBlocked() {
+    public Entity getBlocked() {
         return blocked;
     }
 
-    public void setBlocked(Object blocked) {
+    public void setBlocked(Entity blocked) {
         this.blocked = blocked;
     }
 

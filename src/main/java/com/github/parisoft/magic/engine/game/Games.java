@@ -12,6 +12,10 @@ public class Games {
         }
     };
     
+    public static boolean not(boolean condition) {
+        return !condition;
+    }
+    
     public static Match currentMatch() {
         return currentMatch.get();
     }

@@ -3,28 +3,21 @@ package com.github.parisoft.magic.engine.core.event;
 import static com.github.parisoft.magic.engine.game.Games.currentTurn;
 
 import com.github.parisoft.magic.engine.core.entity.Card;
-import com.github.parisoft.magic.engine.core.entity.Player;
+import com.github.parisoft.magic.engine.core.entity.Entity;
 
 public class DeclareAttackerEvent extends Event {
 
     private final Card attacker;
-    private final Card attackedPlaneswalker;
-    private final Player attackedPlayer;
+    private final Entity attacked;
 
-    public DeclareAttackerEvent(Card attacker, Player attacked) {
+    public DeclareAttackerEvent(Card attacker, Entity attacked) {
         this.attacker = attacker;
-        this.attackedPlayer = attacked;
-        this.attackedPlaneswalker = null;
-    }
-
-    public DeclareAttackerEvent(Card attacker, Card attacked) {
-        this.attacker = attacker;
-        this.attackedPlayer = null;
-        this.attackedPlaneswalker = attacked;
+        this.attacked = attacked;
     }
 
     @Override
     public void perform() {
+        attacker.setAttackedEntity(attacked);
         currentTurn().getAttackers().add(attacker);
     }
 
@@ -32,11 +25,7 @@ public class DeclareAttackerEvent extends Event {
         return attacker;
     }
     
-    public Player getAttackedPlayer() {
-        return attackedPlayer;
-    }
-    
-    public Card getAttackedPlaneswalker() {
-        return attackedPlaneswalker;
+    public Entity getAttacked() {
+        return attacked;
     }
 }

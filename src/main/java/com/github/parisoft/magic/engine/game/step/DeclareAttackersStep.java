@@ -3,6 +3,7 @@ package com.github.parisoft.magic.engine.game.step;
 import static com.github.parisoft.magic.engine.game.Games.attackingPlayer;
 import static com.github.parisoft.magic.engine.game.Games.currentGame;
 import static com.github.parisoft.magic.engine.game.Games.currentTurn;
+import static com.github.parisoft.magic.engine.game.Games.not;
 
 import com.github.parisoft.magic.engine.core.entity.Card;
 import com.github.parisoft.magic.engine.core.event.DeclareAttackersEvent;
@@ -23,8 +24,7 @@ public class DeclareAttackersStep extends Step {
         
         do {
             event = new DeclareAttackersEvent(attackingPlayer().answer(new DeclareAttackersQuestion()));
-            currentGame().perform(event);
-        } while (event.isIllegal());
+        } while (not(currentGame().perform(event)));
     }
 
     private void tapAttackers() {

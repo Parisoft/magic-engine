@@ -8,13 +8,13 @@ import java.util.Collection;
 import java.util.Deque;
 
 import com.github.parisoft.magic.engine.core.entity.Card;
-import com.github.parisoft.magic.engine.core.entity.Timestamped;
+import com.github.parisoft.magic.engine.core.entity.Entity;
 import com.github.parisoft.magic.engine.game.phase.BeginningPhase;
 import com.github.parisoft.magic.engine.game.phase.CombatPhase;
 import com.github.parisoft.magic.engine.game.phase.MainPhase;
 import com.github.parisoft.magic.engine.game.phase.Phase;
 
-public class Turn extends Timestamped implements Runnable {
+public class Turn extends Entity implements Runnable {
 
     private final Deque<BeginningPhase> beginningPhases = newPhases(BeginningPhase.class);
     private final Deque<MainPhase> preCombatMainPhases = newPhases(MainPhase.class);

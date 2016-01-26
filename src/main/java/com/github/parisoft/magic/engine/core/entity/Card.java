@@ -1,15 +1,21 @@
 package com.github.parisoft.magic.engine.core.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Card extends MtgObject {
 
     private boolean tapped = false;
     private boolean phased = false;
-    private List<Card> blocked = new ArrayList<>();
-    private List<Card> blocking = new ArrayList<>();
-    
+    private boolean blocked = false;
+    private @JsonIgnore Entity attackedEntity;
+    private @JsonIgnore final Map<Card, Integer> blockedBy = new LinkedHashMap<>();
+    private @JsonIgnore final Map<Card, Integer> attackedBy = new LinkedHashMap<>();
+
     public boolean isTapped() {
         return tapped;
     }
@@ -25,13 +31,29 @@ public class Card extends MtgObject {
     public void setPhased(boolean phased) {
         this.phased = phased;
     }
-    
-    public List<Card> getBlocked() {
+
+    public boolean isBlocked() {
         return blocked;
     }
-    
-    public List<Card> getBlocking() {
-        return blocking;
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
     }
-    
+
+    public Entity getAttackedEntity() {
+        return attackedEntity;
+    }
+
+    public void setAttackedEntity(Entity attackedEntity) {
+        this.attackedEntity = attackedEntity;
+    }
+
+    public Map<Card, Integer> getBlockedBy() {
+        return blockedBy;
+    }
+
+    public Map<Card, Integer> getAttackedBy() {
+        return attackedBy;
+    }
+
 }

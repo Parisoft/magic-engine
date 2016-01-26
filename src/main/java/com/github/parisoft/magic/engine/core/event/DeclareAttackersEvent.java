@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.parisoft.magic.engine.core.entity.Card;
-import com.github.parisoft.magic.engine.core.entity.Player;
+import com.github.parisoft.magic.engine.core.entity.Entity;
 import com.github.parisoft.magic.engine.game.question.combat.Attack;
 import com.github.parisoft.magic.engine.game.question.combat.DeclareAttackersQuestion;
 
@@ -23,7 +23,7 @@ public class DeclareAttackersEvent extends Event {
         attackList.addAll(emptyIfNull(question.getAnswer()));
     }
     
-    public DeclareAttackersEvent(Card attacker, Object attacked) {
+    public DeclareAttackersEvent(Card attacker, Entity attacked) {
         attackList.add(new Attack(attacker, attacked));
     }
     
@@ -31,12 +31,9 @@ public class DeclareAttackersEvent extends Event {
     public void perform() {
         for (Attack attack : attackList) {
             Card attacker = (Card) attack.getAttacker();
+            Entity attacked = attack.getAttacked();
             
-            if (attack.getAttacked() instanceof Player) {
-                currentGame().perform(new DeclareAttackerEvent(attacker, (Player) attack.getAttacked()));
-            } else {
-                currentGame().perform(new DeclareAttackerEvent(attacker, (Card) attack.getAttacked()));
-            }
+            currentGame().perform(new DeclareAttackerEvent(attacker, attacked));
         }
     }
     

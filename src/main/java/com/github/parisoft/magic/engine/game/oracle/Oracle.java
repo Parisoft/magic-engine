@@ -21,7 +21,8 @@ public class Oracle {
     @PostConstruct
     public void init() throws Exception {
         InputStream setStream = getClass().getClassLoader().getResourceAsStream("AllCards.json");
-        cards.putAll(new ObjectMapper().readValue(setStream, new TypeReference<Map<String, Card>>(){}));
+        Map<String, Card> map = new ObjectMapper().readValue(setStream, new TypeReference<Map<String, Card>>(){});
+        cards.putAll(map);
     }
 
     public Card getCard(String name) {

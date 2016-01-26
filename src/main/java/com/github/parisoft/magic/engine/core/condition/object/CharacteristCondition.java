@@ -24,7 +24,6 @@ public abstract class CharacteristCondition extends Condition<MtgObject> {
         this.conjuction = conjuction;
     }
     
-    
     protected Integer toInteger(String value) {
         try {
             return Integer.valueOf(value);

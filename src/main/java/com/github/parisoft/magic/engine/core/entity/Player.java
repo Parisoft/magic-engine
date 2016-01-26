@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.parisoft.magic.engine.core.zone.Graveyard;
 import com.github.parisoft.magic.engine.core.zone.Hand;
 import com.github.parisoft.magic.engine.core.zone.Library;
 import com.github.parisoft.magic.engine.game.question.Question;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Player {
 
     private String name;

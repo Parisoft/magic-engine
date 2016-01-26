@@ -6,7 +6,7 @@ public class IsPowerquals extends CharacteristCondition {
 
     @Override
     public boolean meets(MtgObject object) {
-        Integer pow = toInteger(object.getPower());
+        Integer pow = object.getPower();
         return pow != null && pow == expectedInt();
     }
 

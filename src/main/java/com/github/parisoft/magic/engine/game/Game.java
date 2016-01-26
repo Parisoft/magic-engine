@@ -47,8 +47,8 @@ public class Game implements Runnable {
         return !Thread.interrupted();//TODO check game end conditions
     }
     
-    public void perform(Event event) {
-        
+    public boolean perform(Event event) {
+        return false;
     }
     
     public void givePriority() {

@@ -1,5 +1,6 @@
 package com.github.parisoft.magic.engine.game.question.combat;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.github.parisoft.magic.engine.core.entity.Card;
@@ -13,7 +14,7 @@ public class AssignBlockDamageOrderQuestion extends Question<List<Card>> {
     public AssignBlockDamageOrderQuestion(Card blocker) {
         super("Choose the order your creature will deal damage");
         this.blocker = blocker;
-        this.attackers = blocker.getBlocking();
+        this.attackers = new ArrayList<>(blocker.getAttackedBy().keySet());
     }
 
     public Card getBlocker() {

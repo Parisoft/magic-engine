@@ -2,12 +2,15 @@ package com.github.parisoft.magic.engine.core.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.github.parisoft.magic.engine.core.ability.Ability;
+import com.github.parisoft.magic.engine.game.oracle.ToIntDeserializer;
 import com.google.common.collect.FluentIterable;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class MtgObject extends Timestamped {
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class MtgObject extends Entity {
 
     protected String name;
     protected String manaCost;
@@ -16,12 +19,15 @@ public class MtgObject extends Timestamped {
     protected List<String> supertypes;
     protected List<String> subtypes;
     protected String text;
-    protected String power;
-    protected String toughness;
+    protected Integer power;
+    protected Integer toughness;
     protected String loyalty;
     protected List<Ability> abilities;
-    
+
+    @JsonIgnore
     protected Player owner;
+    
+    @JsonIgnore
     protected Player controller;
 
     public String getName() {
@@ -80,22 +86,24 @@ public class MtgObject extends Timestamped {
         this.text = text;
     }
 
-    public String getPower() {
-        return power;
-    }
-
-    public void setPower(String power) {
-        this.power = power;
-    }
-
-    public String getToughness() {
+    public Integer getToughness() {
         return toughness;
     }
 
-    public void setToughness(String toughness) {
+    @JsonDeserialize(converter=ToIntDeserializer.class)
+    public void setToughness(Integer toughness) {
         this.toughness = toughness;
     }
+    
+    public Integer getPower() {
+        return power;
+    }
 
+    @JsonDeserialize(converter=ToIntDeserializer.class)
+    public void setPower(Integer power) {
+        this.power = power;
+    }
+    
     public String getLoyalty() {
         return loyalty;
     }
@@ -107,7 +115,7 @@ public class MtgObject extends Timestamped {
     public <A extends Ability> List<A> getAbilities(Class<A> abilityType) {
         return FluentIterable.from(abilities).filter(abilityType).toList();
     }
-    
+
     public List<Ability> getAbilities() {
         return abilities;
     }
@@ -115,13 +123,21 @@ public class MtgObject extends Timestamped {
     public void setAbilities(List<Ability> abilities) {
         this.abilities = abilities;
     }
-    
+
     public Player getOwner() {
         return owner;
     }
-    
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
+
     public Player getController() {
         return controller;
+    }
+
+    public void setController(Player controller) {
+        this.controller = controller;
     }
 
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.parisoft.magic.engine.core.entity.Card;
+import com.github.parisoft.magic.engine.core.entity.Entity;
 import com.github.parisoft.magic.engine.game.question.combat.Block;
 import com.github.parisoft.magic.engine.game.question.combat.DeclareBlockersQuestion;
 
@@ -22,7 +23,7 @@ public class DeclareBlockersEvent extends Event {
         blockList.addAll(emptyIfNull(question.getAnswer()));
     }
     
-    public DeclareBlockersEvent(Object blocker, Object blocked) {
+    public DeclareBlockersEvent(Entity blocker, Entity blocked) {
         blockList.add(new Block(blocker, blocked));
     }
     
