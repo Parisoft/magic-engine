@@ -35,4 +35,16 @@ public class Games {
     public static Player activePlayer() {
         return currentGame().getActivePlayer();
     }
+    
+    public static Player nonActivePlayer() {
+        return activePlayer().getOpponent();
+    }
+    
+    public static Player attackingPlayer() {
+        return activePlayer();
+    }
+    
+    public static Player defendingPlayer() {
+        return nonActivePlayer();
+    }
 }

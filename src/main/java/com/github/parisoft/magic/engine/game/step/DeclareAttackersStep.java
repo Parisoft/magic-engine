@@ -1,6 +1,6 @@
 package com.github.parisoft.magic.engine.game.step;
 
-import static com.github.parisoft.magic.engine.game.Games.activePlayer;
+import static com.github.parisoft.magic.engine.game.Games.attackingPlayer;
 import static com.github.parisoft.magic.engine.game.Games.currentGame;
 import static com.github.parisoft.magic.engine.game.Games.currentTurn;
 
@@ -22,7 +22,7 @@ public class DeclareAttackersStep extends Step {
         DeclareAttackersEvent event;
         
         do {
-            event = new DeclareAttackersEvent(activePlayer().answer(new DeclareAttackersQuestion()));
+            event = new DeclareAttackersEvent(attackingPlayer().answer(new DeclareAttackersQuestion()));
             currentGame().perform(event);
         } while (event.isIllegal());
     }

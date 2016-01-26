@@ -7,7 +7,8 @@ public class Card extends MtgObject {
 
     private boolean tapped = false;
     private boolean phased = false;
-    private List<Card> blockedBy = new ArrayList<>();
+    private List<Card> blocked = new ArrayList<>();
+    private List<Card> blocking = new ArrayList<>();
     
     public boolean isTapped() {
         return tapped;
@@ -25,8 +26,12 @@ public class Card extends MtgObject {
         this.phased = phased;
     }
     
-    public List<Card> getBlockedBy() {
-        return blockedBy;
+    public List<Card> getBlocked() {
+        return blocked;
+    }
+    
+    public List<Card> getBlocking() {
+        return blocking;
     }
     
 }
