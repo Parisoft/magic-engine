@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.github.parisoft.magic.engine.core.ability.Ability;
-import com.github.parisoft.magic.engine.game.oracle.ToIntDeserializer;
+import com.github.parisoft.magic.engine.game.oracle.PowTouDeserializer;
 import com.google.common.collect.FluentIterable;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -90,7 +90,7 @@ public class MtgObject extends Entity {
         return toughness;
     }
 
-    @JsonDeserialize(converter=ToIntDeserializer.class)
+    @JsonDeserialize(converter=PowTouDeserializer.class)
     public void setToughness(Integer toughness) {
         this.toughness = toughness;
     }
@@ -99,7 +99,7 @@ public class MtgObject extends Entity {
         return power;
     }
 
-    @JsonDeserialize(converter=ToIntDeserializer.class)
+    @JsonDeserialize(converter=PowTouDeserializer.class)
     public void setPower(Integer power) {
         this.power = power;
     }
