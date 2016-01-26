@@ -1,5 +1,6 @@
 package com.github.parisoft.magic.engine.core.entity;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ public class Card extends MtgObject {
     private boolean tapped = false;
     private boolean phased = false;
     private boolean blocked = false;
-    private @JsonIgnore Entity attackedEntity;
+    private @JsonIgnore final Map<Entity, Integer> attackedEntity = new HashMap<>();
     private @JsonIgnore final Map<Card, Integer> blockedBy = new LinkedHashMap<>();
     private @JsonIgnore final Map<Card, Integer> attackedBy = new LinkedHashMap<>();
 
@@ -40,12 +41,8 @@ public class Card extends MtgObject {
         this.blocked = blocked;
     }
 
-    public Entity getAttackedEntity() {
+    public Map<Entity, Integer> getAttackedEntity() {
         return attackedEntity;
-    }
-
-    public void setAttackedEntity(Entity attackedEntity) {
-        this.attackedEntity = attackedEntity;
     }
 
     public Map<Card, Integer> getBlockedBy() {

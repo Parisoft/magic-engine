@@ -17,7 +17,7 @@ public class DeclareAttackerEvent extends Event {
 
     @Override
     public void perform() {
-        attacker.setAttackedEntity(attacked);
+        attacker.getAttackedEntity().put(attacked, 0);
         currentTurn().getAttackers().add(attacker);
     }
 
